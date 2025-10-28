@@ -106,7 +106,12 @@
     const resultado = document.getElementById('resultado');
     const botao = document.getElementById('somar');
 
-    botao.addEventListener('click', () => {
+    const num3 = document.getElementById('num3');
+    const num4 = document.getElementById('num4');
+    const result = document.getElementById('result');
+    const button = document.getElementById('button');
+
+    function calcularIMC() {
       const n1 = parseFloat(num1.value);
       const n2 = parseFloat(num2.value);
 
@@ -116,14 +121,9 @@
       } else {
         resultado.textContent = "Digite valores válidos!";
       }
-    });
+    }
 
-    const num3 = document.getElementById('num3');
-    const num4 = document.getElementById('num4');
-    const result = document.getElementById('result');
-    const button = document.getElementById('button');
-
-    button.addEventListener('click', () => {
+    function calcularRQC() {
       const c = parseFloat(num3.value);
       const q = parseFloat(num4.value);
 
@@ -132,6 +132,33 @@
         result.textContent = "RQC: " + calc.toFixed(2);
       } else {
         result.textContent = "Digite valores válidos!";
+      }
+    }
+
+    // Eventos de clique
+    botao.addEventListener('click', calcularIMC);
+    button.addEventListener('click', calcularRQC);
+
+    // Evento Enter para IMC
+    num1.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') num2.focus();
+    });
+
+    num2.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        calcularIMC();
+        num3.focus();
+      }
+    });
+
+    // Eventos Enter para RQC
+    num3.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') num4.focus();
+    });
+
+    num4.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        calcularRQC();
       }
     });
   </script>
