@@ -16,8 +16,18 @@
       padding: 20px;
     }
 
+    .marca-dagua {
+      position: fixed;
+      top: 10px;   /* distância da borda inferior */
+      right: 10px;    /* distância da borda direita */
+      opacity: 1;  /* transparência pra parecer marca d’água */
+      z-index: 9999;  /* garante que fique por cima de outros elementos */
+      pointer-events: none; /* impede que a imagem interfira em cliques */
+      width: 200px;   /* tamanho opcional */
+    }
+
     h2 {
-      color: #333;
+      color: #616161;
       margin-bottom: 10px;
     }
 
@@ -74,6 +84,8 @@
   </style>
 </head>
 <body>
+
+  <img src="Ceus.png" alt="" class="marca-dagua">
 
   <!-- IMC -->
   <div class="calculator">
