@@ -1,87 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Calculadoras: IMC, RQC e GC</title>
   <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #ff7809;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .marca-dagua {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    opacity: 1;
+    z-index: 9999;
+    pointer-events: none;
+    width: 100px;
+  }
+
+  h2 {
+    color: #616161;
+    margin-bottom: 10px;
+  }
+
+  input[type="number"] {
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+    margin-bottom: 10px;
+  }
+
+  input[type="number"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+
+  button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  h3 {
+    margin-top: 15px;
+    color: #333;
+  }
+
+  hr {
+    width: 80%;
+    max-width: 400px;
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+
+  .calculator {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Responsividade */
+  @media (max-width: 600px) {
     body {
-      font-family: 'Arial', sans-serif;
-      background: #ff7809;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
+      padding: 10px;
+    }
+
+    .calculator {
       padding: 20px;
     }
 
     .marca-dagua {
-      position: fixed;
-      top: 10px;   /* distância da borda inferior */
-      right: 10px;    /* distância da borda direita */
-      opacity: 1;  /* transparência pra parecer marca d’água */
-      z-index: 9999;  /* garante que fique por cima de outros elementos */
-      pointer-events: none; /* impede que a imagem interfira em cliques */
-      width: 200px;   /* tamanho opcional */
+      width: 100px;
+      opacity: 0.6;
     }
 
     h2 {
-      color: #616161;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
     }
-
-    input[type="number"] {
-      padding: 8px 10px;
-      width: 200px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    input[type="number"]:focus {
-      border-color: #4caf50;
-      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-top: 15px;
-      border: none;
-      border-radius: 5px;
-      background-color: #4caf50;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    h3 {
-      margin-top: 15px;
-      color: #333;
-    }
-
-    hr {
-      width: 50%;
-      margin: 50px 0;
-      border: 0;
-      border-top: 1px solid #ccc;
-    }
-
-    .calculator {
-      background: #fff;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-      text-align: center;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
