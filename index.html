@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadoras: IMC e RQC</title>
+  <title>Calculadoras: IMC, RQC e GC</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -69,11 +69,13 @@
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       margin-bottom: 30px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
+  <!-- IMC -->
   <div class="calculator">
     <h2>Calcular IMC</h2>
     <label for="num1">Massa (kg):</label>
@@ -88,6 +90,7 @@
 
   <hr>
 
+  <!-- RQC -->
   <div class="calculator">
     <h2>Calcular RQC</h2>
     <label for="num3">Cintura (cm):</label>
@@ -98,6 +101,18 @@
 
     <button id="button">Calcular RQC</button>
     <h3 id="result"></h3>
+  </div>
+
+  <hr>
+
+  <!-- GC -->
+  <div class="calculator">
+    <h2>Calcular Gasto Calórico (GC)</h2>
+    <label for="num5">Massa (kg):</label>
+    <input type="number" id="num5" placeholder="Massa">
+
+    <button id="buttonGC">Calcular GC</button>
+    <h3 id="resultGC"></h3>
   </div>
 
   <script>
@@ -111,6 +126,11 @@
     const result = document.getElementById('result');
     const button = document.getElementById('button');
 
+    const num5 = document.getElementById('num5');
+    const buttonGC = document.getElementById('buttonGC');
+    const resultGC = document.getElementById('resultGC');
+
+    // ---------- Funções ----------
     function calcularIMC() {
       const n1 = parseFloat(num1.value);
       const n2 = parseFloat(num2.value);
@@ -135,11 +155,22 @@
       }
     }
 
-    // Eventos de clique
+    function calcularGC() {
+      const m = parseFloat(num5.value);
+      if (!isNaN(m) && m > 0) {
+        const gc = 0.0175 * m * 24 * 60;
+        resultGC.textContent = "Gasto Calórico: " + gc.toFixed(2) + " kcal por dia";
+      } else {
+        resultGC.textContent = "Digite uma massa válida!";
+      }
+    }
+
+    // ---------- Eventos de clique ----------
     botao.addEventListener('click', calcularIMC);
     button.addEventListener('click', calcularRQC);
+    buttonGC.addEventListener('click', calcularGC);
 
-    // Evento Enter para IMC
+    // ---------- Eventos Enter ----------
     num1.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') num2.focus();
     });
@@ -151,7 +182,6 @@
       }
     });
 
-    // Eventos Enter para RQC
     num3.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') num4.focus();
     });
@@ -159,6 +189,13 @@
     num4.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         calcularRQC();
+        num5.focus();
+      }
+    });
+
+    num5.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        calcularGC();
       }
     });
   </script>
